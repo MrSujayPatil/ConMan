@@ -1,0 +1,35 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Welcome Contact</title>
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+		<h1>Welcome to ConMan!!</h1>
+		<h3>That is Contact Manager</h3>
+		
+		<ul>
+			<li>
+				<p>
+					You can edit any contact details but <b>Email Id</b> cannot be
+					edited as it is a <b> primary key</b>.
+				</p>
+			</li>
+			<li>
+				<p>
+					Add some contacts using <a href="#" th:href="@{/contact/new}">Create
+						new contact</a>
+				</p>
+			</li>
+			<li>
+				<p>
+					View all contacts using <a href="#" th:href="@{/contacts}">Contacts</a>
+				</p>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

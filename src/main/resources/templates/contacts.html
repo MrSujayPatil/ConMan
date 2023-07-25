@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Contacts</title>
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(contacts)}">
+        <h2>Contact List</h2>
+        <table class="table table-striped">
+            <tr>
+            <th>Email Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone Number</th>
+                <th>Status</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="contact : ${contacts}">
+                <td th:text="${contact.emailId}"><a href="/contact/${contact.emailId}">Email Id</a></td>
+                <td th:text="${contact.firstName}">First Name</td>
+                <td th:text="${contact.lastName}">Last Name</td>
+                <td th:text="${contact.phoneNumber}">Phone Number</td>
+                <td th:text="${contact.status}">Status</td>
+                <td><a th:href="${ '/contact/' + contact.emailId}">View</a></td>
+                <td><a th:href="${'/contact/edit/' + contact.emailId}">Edit</a></td>
+                <td><a th:href="${'/contact/delete/' + contact.emailId}">Delete</a></td>
+            </tr>
+        </table>
+
+    </div>
+    <div th:if="${#lists.isEmpty(contacts)}">
+    <h1>Empty List</h1>
+    <p>Add some contacts using <a href="#" th:href="@{/contact/new}">Create new contact</a></p>
+    </div>
+</div>
+</body>
+</html>
